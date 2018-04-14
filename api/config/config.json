@@ -1,0 +1,9 @@
+{
+	"production": {
+		"username": "root",
+		"password": "root",
+		"database": "fastfood",
+		"host": "localhost",
+		"dialect": "mysql"
+	}
+}
