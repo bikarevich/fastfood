@@ -1,0 +1,12 @@
+.nav {
+    text-align: center;
+
+    & > * {
+        padding: 10px 15px;
+        cursor: pointer;
+
+        &:hover {
+            opacity: .8;
+        }
+    }
+}

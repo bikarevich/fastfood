@@ -1,0 +1,30 @@
+* {
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f0ede5;
+    color: #6d3d32;
+    direction: ltr;
+    font-family: 'HelenPro2Cond', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.logo {
+    background: url(../../assets/logo.png) center no-repeat;
+    display: inline-block;
+    width: 74px;
+    height: 75px;
+    background-size: cover;
+}
+
+.center-align {
+    text-align: center;
+}
+
+.right-align {
+    text-align: right;
+}

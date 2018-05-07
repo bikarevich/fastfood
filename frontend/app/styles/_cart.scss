@@ -1,0 +1,30 @@
+.cart {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background: url(../../assets/cart.png) 22px center no-repeat;
+    background-size: 29px 41px;
+
+    &:hover {
+        opacity: .8;
+    }
+
+    span {
+        position: absolute;
+        left: 5px;;
+        bottom: 5px;;
+        font-size: 14px;
+        font-weight: bold;
+        display: block;
+        width: 24px;
+        height: 24px;
+        line-height: 18px;
+        text-align: center;
+        border-radius: 14px;
+        background-color: #f6a52d;
+        border: 3px solid #f0ede5;
+        font-weight: bold;
+    }
+}
