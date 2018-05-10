@@ -1,0 +1,15 @@
+.loader {
+    position: absolute;
+    background: url(../../assets/loader.gif) center no-repeat #f0ede5;
+    background-size: 200px auto;
+    z-index: 99;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: none;
+
+    &.visible {
+        display: block;
+    }
+}
