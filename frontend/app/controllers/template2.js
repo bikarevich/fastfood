@@ -1,5 +1,3 @@
-import { Controller } from '../core/Controller';
+import Controller from '../core/Controller';
 
-class template2Controller extends Controller {}
-
-export { template2Controller };
+export default class template2Controller extends Controller {}

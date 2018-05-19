@@ -1,16 +1,21 @@
-class Controller {
-	constructor(template) {
+export default class Controller {
+	constructor(template, model) {
 		this.template = template;
 		this.wrapperId = 'page-content';
+		this.model = model;
 	}
 
 	init() {
 		this.render();
 	}
 
+	_setModel(model) {
+		this.model = model;
+	}
+
 	render() {
-		document.getElementById(this.wrapperId).appendChild(this.template);
+		const wrapper = document.getElementById(this.wrapperId);
+		
+		wrapper.appendChild(this.template);
 	}
 }
-
-export { Controller };

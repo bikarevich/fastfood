@@ -1,33 +1,57 @@
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
-const babel = require('gulp-babel');
-const concat = require('gulp-concat');
 const sass = require('gulp-sass');
-const serve = require('gulp-serve');
+const browserify = require('browserify');
+const buffer = require('vinyl-buffer');
+const browserSync = require('browser-sync');
+const source = require('vinyl-source-stream');
+const autoprefixer = require('gulp-autoprefixer');
 
-gulp.task('scripts', () => {
-	gulp.src('app/**/*.js')
+const entryPoint = './app/app.js',
+	browserDir = './app',
+	sassWatchPath = './app/styles/**/*.scss',
+	jsWatchPath = './app/**/*.js',
+	htmlWatchPath = './app/**/*.html';
+
+gulp.task('js', () => {
+	return browserify(entryPoint, { debug: true, extensions: ['es6'] })
+		.transform('babelify', { presets: ['es2015'] })
+		.bundle()
+		.pipe(source('bundle.js'))
+		.pipe(buffer())
+		.pipe(sourcemaps.init({ loadMaps: true }))
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest('app/dist'))
+		.pipe(browserSync.reload({ stream: true }));
+});
+
+gulp.task('browser-sync', () => {
+	const config = {
+		server: { baseDir: browserDir }
+	};
+
+	return browserSync(config);
+});
+
+gulp.task('sass', () => {
+	return gulp.src(sassWatchPath)
 		.pipe(sourcemaps.init())
-		.pipe(babel({
-			presets: ['env']
+		.pipe(sass().on('error', sass.logError))
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions']
 		}))
-		.pipe(concat('all.js'))
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('app/dist'));
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest('.app/styles/css'))
+		.pipe(browserSync.reload({ stream: true }));
 });
 
-gulp.task('styles', () => {
-	return gulp.src('app/styles/**/*.scss')
-		.pipe(sass.sync().on('error', sass.logError))
-		.pipe(gulp.dest('app/styles/css'));
+gulp.task('watch', () => {
+	gulp.watch(jsWatchPath, ['js']);
+	gulp.watch(sassWatchPath, ['sass']);
+	gulp.watch(htmlWatchPath, () => {
+		return gulp.src('')
+			.pipe(browserSync.reload({ stream: true }));
+	});
 });
 
-gulp.task('scripts:watch', () => {
-	gulp.watch(['app/**/*.js', '!app/dist/**/*.js'], ['scripts']);
-});
-
-gulp.task('styles:watch', () => {
-	gulp.watch('app/styles/**/*.scss', ['styles']);
-});
-
-gulp.task('serve', ['scripts', 'styles', 'scripts:watch', 'styles:watch'], serve('app'));
+gulp.task('run', ['js', 'sass', 'watch', 'browser-sync']);
