@@ -1,11 +1,14 @@
+import utils from './utils';
+import { settings } from '../settings';
+
 export default class Controller {
-	constructor(template, model) {
-		this.template = template;
-		this.wrapperId = 'page-content';
+	constructor(templateUrl, model) {
+		this.templateUrl = templateUrl;
 		this.model = model;
 	}
 
 	init() {
+		console.log('Controller init');
 		this.render();
 	}
 
@@ -13,9 +16,9 @@ export default class Controller {
 		this.model = model;
 	}
 
-	render() {
-		const wrapper = document.getElementById(this.wrapperId);
-		
-		wrapper.appendChild(this.template);
+	async render() {
+		const wrapper = document.getElementById(settings.wrapperId);
+		const html = await utils.fetchHtml(this.templateUrl);
+		wrapper.insertAdjacentHTML('afterbegin', html);
 	}
 }

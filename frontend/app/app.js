@@ -1,4 +1,4 @@
 import { router } from './routes/index';
 
-router.navigate('template1');
+router.goToRoute('template1');
 
