@@ -1,4 +1,5 @@
-import Router from '../core/Router';
+import Router from '../core/router/Router';
+import { loader } from '../core/loader/Loader';
 import template1Controller from '../controllers/template1';
 import template2Controller from '../controllers/template2';
 
@@ -15,7 +16,7 @@ const routes = {
 	}
 };
 
-const router = new Router(routes);
+const router = new Router(routes, loader);
 router.init();
 
 export { router };

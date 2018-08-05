@@ -1,15 +1,18 @@
 .loader {
-    position: absolute;
-    background: url(../../assets/loader.gif) center no-repeat #f0ede5;
-    background-size: 200px auto;
-    z-index: 99;
+    position: fixed;
+    background: url(../../assets/loader.gif) center no-repeat rgba(0,0,0,.7);
+    background-size: 100px auto;
+    z-index: 101;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    display: none;
-
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 600ms, visibility 600ms;
+    
     &.visible {
-        display: block;
+        visibility: visible;
+        opacity: 1;
     }
 }

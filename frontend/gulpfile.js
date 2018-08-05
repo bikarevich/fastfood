@@ -10,7 +10,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const entryPoint = './app/app.js',
 	browserDir = './app',
 	sassWatchPath = './app/styles/**/*.scss',
-	jsWatchPath = './app/**/*.js',
+	jsWatchPath = ['./app/**/*.js', '!./app/dist/**/*'],
 	htmlWatchPath = './app/**/*.html';
 
 gulp.task('js', () => {
@@ -41,7 +41,7 @@ gulp.task('sass', () => {
 			browsers: ['last 2 versions']
 		}))
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest('.app/styles/css'))
+		.pipe(gulp.dest('./app/styles/css'))
 		.pipe(browserSync.reload({ stream: true }));
 });
 

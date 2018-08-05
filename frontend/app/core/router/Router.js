@@ -1,35 +1,50 @@
 
-import utils from './utils';
-import { settings } from '../settings';
+import utils from '../utils';
+import routerUtils from './utils';
+import { settings } from '../../settings';
 
 export default class Router {
-	constructor(routes) {
+	constructor(routes, loader) {
 		this.routes = routes;
+		this.loader = loader;
 		this.controllers = [];
 	}
 
 	init() {
-		console.log('Router init');
 		this._activateLinkToButtons();
 	}
 
 	goToRoute(routeName) {
-		utils.clearDomElement(settings.wrapperId);
 		const route = this.routes[routeName];
+
+		this.loader.show();
+		utils.clearDomElement(settings.wrapperId);
+		this._initController(route);
+		routerUtils.changeUrl(route.url);
+		this.loader.hide();
+	}
+
+	async _initController(route) {
 		const templateUrl = route.templateUrl;
 		const Controller = route.controller;
-		const model = this._getModel();
+		const model = await this._getModel();
 		const controller = new Controller(templateUrl, model);
 		controller.init();
 	}
 
 	_getModel() {
-		return [
-			{ name: 'Sasha' },
-			{ name: 'Vasya' },
-			{ name: 'Petya' },
-			{ name: 'Igor' }
-		];
+		return Promise.resolve(
+			{
+				model: {
+					users: [
+						{ name: 'Sasha' },
+						{ name: 'Vasya' },
+						{ name: 'Petya' },
+						{ name: 'Igor' }
+					]
+				}
+			}
+		);
 	}
 
 	_activateLinkToButtons() {
