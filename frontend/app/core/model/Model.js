@@ -1,21 +1,11 @@
-export { http } from '../http/Http';
+import http from '../http/Http';
 
 export default class Models {
-	constructor() {}
-
-	getAll() {
-
+	constructor() {
+		this.http = http;
 	}
 
-	getById() {
-
-	}
-
-	save() {
-
-	}
-
-	update() {
-
+	getAll(modelUrl) {
+		return this.http.get(modelUrl);
 	}
 }

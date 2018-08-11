@@ -27,24 +27,9 @@ export default class Router {
 	async _initController(route) {
 		const templateUrl = route.templateUrl;
 		const Controller = route.controller;
-		const model = await this._getModel();
+		const model = await route.model();
 		const controller = new Controller(templateUrl, model);
 		controller.init();
-	}
-
-	_getModel() {
-		return Promise.resolve(
-			{
-				model: {
-					users: [
-						{ name: 'Sasha' },
-						{ name: 'Vasya' },
-						{ name: 'Petya' },
-						{ name: 'Igor' }
-					]
-				}
-			}
-		);
 	}
 
 	_activateLinkToButtons() {

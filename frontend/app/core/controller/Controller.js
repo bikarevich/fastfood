@@ -12,10 +12,6 @@ export default class Controller {
 		this.render();
 	}
 
-	_setModel(model) {
-		this.model = model;
-	}
-
 	async render() {
 		const wrapper = document.getElementById(settings.wrapperId);
 		const html = await utils.fetchHtml(this.templateUrl);

@@ -1,12 +1,9 @@
-import Model from '../core/model';
+import Models from '../core/model/Model';
 
-class Dishes extends Model {
+class Dishes extends Models {
 	constructor() {
-		super();
-		this.modelName = 'dishes';
+		super(...arguments);
 	}
 }
 
-const dishes = new Dishes();
-
-export { dishes };
+export default new Dishes();

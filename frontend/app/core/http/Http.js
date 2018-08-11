@@ -1,19 +1,18 @@
 import { settings } from '../../settings';
-
-export default class Http {
+class Http {
 	constructor() {
 		this.params = {
+			'mode': 'cors',
 			headers: {
 				'content-type': 'application/json; charset=UTF-8'
 			}
 		};
 	}
 
-	get(url, query = {}) {
+	get(url) {
 		const queryUrl = this._getQueryUrl(url);
 		const params = Object.assign({}, this.params, {
-			method: 'GET',
-			query
+			method: "GET"
 		});
 
 		return this._sendRequest(queryUrl, params);
@@ -29,22 +28,29 @@ export default class Http {
 		return this._sendRequest(queryUrl, params);
 	}
 
+	put(url, reqData = {}) {
+		const queryUrl = this._getQueryUrl(url);
+		const params = Object.assign({}, this.params, {
+			method: 'PUT',
+			body: reqData
+		});
+
+		return this._sendRequest(queryUrl, params);
+	}
+
 	_getQueryUrl(url) {
 		return settings.apiUrl + url;
 	}
 
 	_sendRequest(queryUrl, params) {
 		return fetch(queryUrl, params)
-			.then((data) => {
-				return data.json();
-			})
-			.catch((error) => {
-				return error;
+			.then((response) => {
+				return response.json();
+			}).then((data) => {
+				return data;
 			});
 	}
 }
 
-const http = new Http();
-
-export { http };
+export default new Http();
 

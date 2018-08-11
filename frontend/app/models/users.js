@@ -1,12 +1,9 @@
-import Model from '../core/model';
+import Models from '../core/model/Model';
 
-class Users extends Model {
+class Users extends Models {
 	constructor() {
-		super();
-		this.modelName = 'users';
+		super(...arguments);
 	}
 }
 
-const users = new Users();
-
-export { users };
+export default new Users();

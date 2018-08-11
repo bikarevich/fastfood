@@ -1,0 +1,68 @@
+.dish {
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 7px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+
+    &-image {
+        margin-bottom: 10px;
+    }
+
+    &-title {
+        color: #ec6f23;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        line-height: 1;
+        min-height: 2em;
+        margin: 0 0 10px;
+    }
+
+    &-description {
+        font-size: 14px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        margin: 0 0 10px;
+        font-style: italic;
+    }
+
+    &-price {
+        color: #6d3d32;
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    &-popup {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0);
+        transition: .3s ease all;
+
+        .button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -700%);
+            transition: .5s ease all;
+        }
+    }
+
+    &:hover {
+        .dish-popup {
+            background-color: rgba(0,0,0,.65);
+
+            .button {
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}

@@ -1,3 +1,10 @@
 <div>
     Template 2
+    <ul class="writers_list">
+        {{#each model.dishes}}
+            <li>{{this.name}}</li>
+        {{else}}
+            <li>No items found</li>
+        {{/each}}
+      </ul>
 </div>

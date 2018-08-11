@@ -1,10 +1,25 @@
 <div>
-    Template 1 
-    <ul class="writers_list">
-        {{#each model.users}}
-            <li>{{this.name}}</li>
+    <ul class="grid">
+        {{#each dishes}}
+            <li class="item dish">
+                <div class="dish-image">
+                    <img src="{{this.image}}">
+                </div>
+                <div class="dish-title">
+                    {{this.title}}
+                </div>
+                <div class="dish-description">
+                    {{this.description}}
+                </div>
+                <div class="dish-price">
+                    {{this.price}} BYN
+                </div>
+                <div class="dish-popup">
+                    <button class="button">Add to cart</button>
+                </div>
+            </li>
         {{else}}
             <li>No items found</li>
         {{/each}}
-      </ul>
+    </ul>
 </div>

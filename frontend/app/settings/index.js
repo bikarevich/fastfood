@@ -1,6 +1,6 @@
 export const settings = {
 	wrapperId: 'page-content',
 	hashSyntax: '#!',
-	apiUrl: 'localhost:8080'
+	apiUrl: 'http://localhost:8080/v1/'
 };
 
