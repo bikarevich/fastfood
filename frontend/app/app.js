@@ -1,4 +1,6 @@
 import { router } from './routes/';
 
-router.goToRoute('template1');
+import cart from './components/cart/Cart';
+cart.init();
 
+router.goToRoute('template1');
