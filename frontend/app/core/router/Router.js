@@ -33,7 +33,7 @@ export default class Router {
 	}
 
 	_activateLinkToButtons() {
-		utils.addEventListener('.linkTo', 'click', this._routeToAction, this);
+		utils.addEventListener('linkTo', 'click', this._routeToAction, this);
 	}
 
 	_routeToAction(evt) {

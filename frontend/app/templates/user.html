@@ -1,0 +1,18 @@
+<div class="user-form">
+    <div>
+        <h4>Select one of the existing clients please:</h4>
+        <select action="change selectExisting">
+            <option selected disabled>Existing clients</option>
+            {{#each users}}
+                <option value="{{json this}}" class="item user">
+                        {{this.name}}
+                </option>
+            {{else}}
+                <option>No items found</option>
+            {{/each}}
+        </select>
+        <h4>..or create a new one:</h4>
+        <input type="text" id="clientName" placeholder="Client name">
+        <button type="button" class="button" action="click createNewUser">Create</button>
+    </div>
+</div>

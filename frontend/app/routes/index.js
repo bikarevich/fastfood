@@ -1,11 +1,13 @@
 import Router from '../core/router/Router';
 import { loader } from '../core/loader/Loader';
-import template1 from './template1';
-import template2 from './template2';
+import order from './order';
+import cart from './cart';
+import user from './user';
 
 const routes = {
-	template1,
-	template2
+	order,
+	cart,
+	user
 };
 
 const router = new Router(routes, loader);

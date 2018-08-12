@@ -14,8 +14,9 @@
                 <div class="dish-price">
                     {{this.price}} BYN
                 </div>
-                <div class="dish-popup">
-                    <button class="button">Add to cart</button>
+                <div class="dish-buttons">
+                    <button class="button top" action="click addCartItem" action-data="{{json this}}">Add</button>
+                    <button class="button bottom" action="click removeCartItem" action-data="{{this.id}}">Remove</button>
                 </div>
             </li>
         {{else}}

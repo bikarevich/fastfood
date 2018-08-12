@@ -12,6 +12,24 @@
         margin-bottom: 10px;
     }
 
+    &-total {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        width: 50px;
+        height: 50px;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 0 8px 0 36px;
+        background-color: #f6a52d;
+        box-shadow: 0 10px 40px 0 rgba(0,0,0,.6);
+        border: 3px solid #f0ede5;
+        font-weight: bold;
+        font-size: 24px;
+        padding-left: 5px;
+    }
+
     &-title {
         color: #ec6f23;
         font-size: 20px;
@@ -38,31 +56,20 @@
         font-weight: bold;
     }
 
-    &-popup {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0);
-        transition: .3s ease all;
-
-        .button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -700%);
-            transition: .5s ease all;
+    &-buttons {
+        text-align: center;
+        padding-top: 15px;
+         
+        &:after {
+            content: '';
+            display: table;
+            width: 100%;
+            clear: both;
         }
-    }
-
-    &:hover {
-        .dish-popup {
-            background-color: rgba(0,0,0,.65);
-
-            .button {
-                transform: translate(-50%, -50%);
-            }
+        .button {
+            float: left;
+            width: 48%;
+            margin: 0 1%;
         }
     }
 }

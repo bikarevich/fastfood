@@ -4,6 +4,15 @@
     font-family: 'Roboto Mono', monospace;
 }
 
+a {
+    font-family: 'Roboto Mono', monospace;
+    color: #6d3d32;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
 img {
     max-width: 100%;
 }

@@ -5,7 +5,11 @@ export default class Models {
 		this.http = http;
 	}
 
-	getAll(modelUrl) {
-		return this.http.get(modelUrl);
+	getAll() {
+		return this.http.get(this.modelUrl);
+	}
+
+	create(data) {
+		return this.http.post(this.modelUrl, data);
 	}
 }

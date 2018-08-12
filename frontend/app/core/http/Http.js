@@ -21,8 +21,8 @@ class Http {
 	post(url, reqData = {}) {
 		const queryUrl = this._getQueryUrl(url);
 		const params = Object.assign({}, this.params, {
-			method: 'POST',
-			body: reqData
+			method: "POST",
+			body: JSON.stringify(reqData)
 		});
 
 		return this._sendRequest(queryUrl, params);

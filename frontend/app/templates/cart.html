@@ -1,0 +1,31 @@
+<div>
+    <ul class="grid">
+        {{#each dishes}}
+            <li class="item dish">
+                {{#if this.total}}
+                    <div class="dish-total">
+                        {{this.total}}
+                    </div>
+                {{/if}}
+                <div class="dish-image">
+                    <img src="{{this.image}}">
+                </div>
+                <div class="dish-title">
+                    {{this.title}}
+                </div>
+                <div class="dish-description">
+                    {{this.description}}
+                </div>
+                <div class="dish-price">
+                    {{this.price}} BYN
+                </div>
+                <div class="dish-buttons">
+                    <button class="button top" action="click addCartItem" action-data="{{json this}}">Add</button>
+                    <button class="button bottom" action="click removeCartItem" action-data="{{this.id}}">Remove</button>
+                </div>
+            </li>
+        {{else}}
+            <li>No items found</li>
+        {{/each}}
+    </ul>
+</div>

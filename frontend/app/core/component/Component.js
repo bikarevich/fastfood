@@ -10,6 +10,7 @@ export default class Component {
 	init() {
 		document.registerElement(this.tagName);
 		this.render();
+		utils.addEventListeners(this.actions, this.wrapper, this);
 	}
 
 	async render() {
@@ -19,5 +20,9 @@ export default class Component {
 		const template = compiledHtml(this._data);
 		wrapper.innerHTML = '';
 		wrapper.insertAdjacentHTML('afterbegin', template);
+	}
+
+	update() {
+		this.render();
 	}
 }
